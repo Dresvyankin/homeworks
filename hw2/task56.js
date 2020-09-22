@@ -1,20 +1,20 @@
-'use strict'
+"use strict";
 
-let arr = [2, 6, 10, 17, 34, 56, 47, 93];
-let arr2 = [];
+let arr = [2, 6, 10, 17, 34, 56];
 
+let a = 0;
 for (let i = 0; i < arr.length; i++) {
-  if (arr[i] % 2 === 0) {
-    arr2.push(arr[i]);
+  if (i % 2 === 0) {
+    a += 1;
   }
 }
-if (arr2.length > 4) {
-  arr2.shift();
-  arr2.pop();
-} else if (arr2.length < 4) {
-  arr2.push(8);
-  arr2.unshift(42);
+if (a > 4) {
+  arr.shift();
+  arr.pop();
+} else if (a < 4) {
+  arr.push(8);
+  arr.unshift(42);
 }
 
-console.log(arr2);
-console.log(arr2.length);
+console.log(a);
+console.log(arr);
