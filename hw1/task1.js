@@ -1,7 +1,10 @@
 "use strict";
 
 function compareNumber(a, b) {
-  a > b ? console.log(a) : console.log(b);
+  if (a > b) {
+    return a;
+  } else return b;
 }
 
-compareNumber(5, 7);
+let biggerNum = compareNumber(9, 7);
+console.log(biggerNum);
