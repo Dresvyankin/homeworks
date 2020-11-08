@@ -61,21 +61,14 @@ class MyArray {
     return myArray;
   }
 
-  sort(callback) {
-    if (!arguments.length) {
-      for (let i = 0, endI = this.length - 1; i < endI; i++) {
-        for (let j = 0, endJ = endI - i; j < endJ; j++) {
-          if (this[j] > this[j + 1]) {
-            let swap = this[j];
-            this[j] = this[j + 1];
-            this[j + 1] = swap;
-          }
+  sort() {
+    for (let i = 0, endI = this.length - 1; i < endI; i++) {
+      for (let j = 0, endJ = endI - i; j < endJ; j++) {
+        if (this[j] > this[j + 1]) {
+          let swap = this[j];
+          this[j] = this[j + 1];
+          this[j + 1] = swap;
         }
-      }
-      return this;
-    } else {
-      for (let key in this) {
-        callback(this[key], this[key + 1]);
       }
     }
     return this;
@@ -83,16 +76,9 @@ class MyArray {
 
   reduce(callback, start) {
     let total;
-    if (typeof start === "undefined") {
-      total = this[0];
-      for (let i = 1; i < this.length; i++) {
-        total = callback(total, this[i], i, this);
-      }
-    } else {
-      total = start;
-      for (let i = 0; i < this.length; i++) {
-        total = callback(total, this[i], i, this);
-      }
+    !arguments[1] ? (total = 0) : (total = start);
+    for (let i = 0; i < this.length; i++) {
+      total = callback(total, this[i], i, this);
     }
     return total;
   }
@@ -100,12 +86,7 @@ class MyArray {
   toString() {
     let str = "";
     for (let key in this) {
-      if (key != this.length - 1) {
-        str += this[key];
-        str += ",";
-      } else {
-        str += this[key];
-      }
+      key != this.length - 1 ? (str += this[key] + ",") : (str += this[key]);
     }
     return str;
   }
@@ -130,8 +111,8 @@ let array = new MyArray(1, 3, 2, 7, 4, "sdas", { user: "Andr" });
 // console.log(MyArray.from(array));
 
 // console.log(array.reduce((total, item) => item + total));
+// console.log(array.reduce((total, item) => item + total, 1));
 
 // console.log(array.sort());
-// console.log(array.sort((a, b) => a - b));
 
 console.log(array);
