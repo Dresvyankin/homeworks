@@ -1,16 +1,17 @@
 class MyArray {
+  constructor() {
+    for (let i = 0; i < arguments.length; i++) {
+      this[i] = arguments[i];
+    }
+    return this;
+  }
+
   static from(arrayClone) {
     let array = [];
     for (let key in arrayClone) {
       array[key] = arrayClone[key];
     }
     return array;
-  }
-  constructor() {
-    for (let i = 0; i < arguments.length; i++) {
-      this[i] = arguments[i];
-    }
-    return this;
   }
 
   get length() {
